@@ -1,8 +1,11 @@
 ﻿using Entities;
 using Logger;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repository;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +25,19 @@ namespace ERV2.Extensions
         {
             var cnString = configuration["mySqlcn:connectionString"];
             services.AddDbContext<MainContext>(o => o.UseMySql(cnString));
+        }
+
+        public static void ConfigureUnitOfWork(this IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+
+        public static void ConfigureIISIntegration(this IServiceCollection services)
+        {
+            services.Configure<IISOptions>(options =>
+            {
+
+            });
         }
     }
 }

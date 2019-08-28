@@ -21,7 +21,6 @@ namespace Entities
         public virtual DbSet<Kompanije> Kompanije { get; set; }
         public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<Sektori> Sektori { get; set; }
-        public virtual DbSet<Sysdiagrams> Sysdiagrams { get; set; }
         public virtual DbSet<Tipoviizlaznica> Tipoviizlaznica { get; set; }
         public virtual DbSet<Uposlenici> Uposlenici { get; set; }
     }

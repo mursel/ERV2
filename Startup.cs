@@ -29,8 +29,8 @@ namespace ERV2
             // inject our services
             services.ConfigureLog();
             services.ConfigureMySql(Configuration);
-
-
+            services.ConfigureUnitOfWork();
+            services.ConfigureIISIntegration();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -75,7 +75,8 @@ namespace ERV2
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseAngularCliServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200/");
                 }
             });
         }
