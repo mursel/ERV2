@@ -31,6 +31,7 @@ namespace ERV2
             services.ConfigureMySql(Configuration);
             services.ConfigureUnitOfWork();
             services.ConfigureIISIntegration();
+            services.ConfigureCors();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -58,6 +59,7 @@ namespace ERV2
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseCors("CorsPolicy");
 
             app.UseMvc(routes =>
             {

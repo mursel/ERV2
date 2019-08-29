@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities.Models;
 using Logger;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,11 +23,12 @@ namespace ERV2.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Uposlenici> Get()
         {
             logService.Info("Get Got Called!");
             var uposlenici = unitOfWork.Uposlenici.GetAll();
-            return new string[] { "Jedan", "Dva" };
+            //return new string[] { "Jedan", "Dva" };
+            return uposlenici;
         }
     }
 }

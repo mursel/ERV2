@@ -39,5 +39,13 @@ namespace ERV2.Extensions
 
             });
         }
+
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(p =>
+            {
+                p.AddPolicy("CorsPolicy", cp => cp.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            });
+        }
     }
 }
