@@ -7,5 +7,7 @@ namespace Repository.Interfaces
 {
     public interface IUposlenici : IRepository<Uposlenici>
     {
+        Uposlenici GetById(int id);
+        
     }
 }
