@@ -10,7 +10,7 @@ using Repository.Interfaces;
 
 namespace ERV2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UposleniciController : ControllerBase
     {
@@ -53,6 +53,14 @@ namespace ERV2.Controllers
             logService.Info("UposleniciController:GetAll!");
             var uposlenici = unitOfWork.Uposlenici.GetAll();
             //return new string[] { "Jedan", "Dva" };
+            return uposlenici;
+        }
+
+        [HttpGet("bySektor")]
+        public IEnumerable<Uposlenici> GetAllBySector(int sektorId)
+        {
+            logService.Info("UposleniciController:GetAllBySector");
+            var uposlenici = unitOfWork.Uposlenici.GetAllBySectorId(sektorId);
             return uposlenici;
         }
     }
