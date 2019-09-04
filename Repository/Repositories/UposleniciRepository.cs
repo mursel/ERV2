@@ -24,7 +24,10 @@ namespace Repository.Repositories
 
         public Uposlenici GetByUserAndPass(string u, string p)
         {
-            return Find(a => a.Username == u && a.Password == p).FirstOrDefault();
+            var uposlenik = Find(a => a.Username == u && a.Password == p).FirstOrDefault();
+            uposlenik = Find(a => a.Username == u && a.Password == p).SingleOrDefault();
+            var uposlenici = Find(a => a.Username == u && a.Password == p);
+            return uposlenik;
         }
     }
 }
