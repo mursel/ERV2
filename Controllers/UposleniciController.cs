@@ -22,7 +22,7 @@ namespace ERV2.Controllers
             this.unitOfWork = _unitOfWork; this.logService = _logService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("details/{id}")]
         public IActionResult Get(int id)
         {
             logService.Info("UposleniciController:Get!");
